@@ -1,0 +1,37 @@
+----------
+| rustup |
+----------
+
+1. To update the rust version
+  - rustup update
+
+2. Check for updates
+  - rustup check
+
+3. Set default version 
+  - rustup default <version>
+
+4. Open documentation
+  - rustup doc
+
+5. See active version of toolchain
+  - rustup show
+
+6. Uninstall rust 
+  - rustup self uninstall
+
+
+---------
+| Rustc |
+---------
+
+1. Compile a file
+  - rustc <file-name>.rs
+
+
+-----------
+| Rustfmt |
+-----------
+
+1. Format file
+  - rustfmt <file-name>.rs

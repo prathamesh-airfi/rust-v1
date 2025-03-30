@@ -1,0 +1,26 @@
+---------
+| Cargo |
+---------
+
+1. Create new project
+  - cargo new <project-name>
+
+2. Format the project
+  - cargo fmt
+  
+3. Build project
+  - cargo build / b                 = Build with debug profile (Default)
+  - cargo build / b --release       = Build with release profile 
+  - cargo build / b --debug         = Build with debug profile
+
+4. Clean the Project (purge caching)
+  - cargo clean
+
+5. Run the project
+  - cargo run / r                   = (cargo build + run project)
+  - cargo run /r --quiet            = Run project with silence(no compilation info printed)
+
+6. Check for Compilation errors
+  - cargo check
+  - cargo check --quiet
+  - cargo check --release

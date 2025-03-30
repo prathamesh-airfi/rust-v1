@@ -1,11 +1,12 @@
 fn main() {
-    let apples = 10;
-    let oranges = 20;
-    let fruits = apples + oranges;
-    println!("This year, my garden has {} apples.", apples); // Interpolated Arguments
-    println!("This year, my graden has total {fruits} fruits"); // Interpolated Arguments
-    println!(
-        "This year, my garden has {0} apples, {1} oragnes and total {2} fruits",
-        apples, oranges, fruits
-    ); // Positional Arguments
+   /*
+    Variable Shadowing: 
+        Variable Shadowing means redeclaring a variable.
+        The original variable is replaced by the new one. 
+   */
+
+  let grams_of_protein = "100.345";
+  let grams_of_protein = 100.345;
+  let grams_of_protein = 100;
+
 }

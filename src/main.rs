@@ -1,10 +1,16 @@
 fn main() {
-   println!("Dear Emily,\nHow you have been");
-   println!("\tOnce upon a time");
-   println!("Juliet said \"I Love you Romio\"");
-   let file_path = "C:\\My Documents\\new\\videos";
-   let file_path_2 = r"C:\My Documents\new\videos"; // Raw String
-   println!("{file_path}");
-   println!("{file_path_2}");
+    /*
+        Methods 
+            A method is a function that lives on a value.
+            Its an action we can ask the value to execute.
+    */
 
+    let value: i32 = -15;
+    println!("{}", value.abs());
+    println!("Power {}", value.pow(2));
+    println!("Power {}", value.pow(3));
+
+
+    let empty_space = "        empty_space";
+    println!("{}", empty_space.trim());
 }

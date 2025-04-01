@@ -1,19 +1,10 @@
 fn main() {
-    /* 
-        Signed Integer
-            - Support +ve and -ve values. They start with with an i(integer)
-    */
-
-    let eight_bit: i32 = 8;
-    let sixteen_bit: i16 = 16;
-    let thirty_two_bit: i32 = 32;
-
-
-    /* 
-        Unsigned Integer
-            - Support +ve values. They start with with an u(unsigned)
-            - Only support zero & positive values.
-            - They can store a larger max value in positive direction.
-    */
+   println!("Dear Emily,\nHow you have been");
+   println!("\tOnce upon a time");
+   println!("Juliet said \"I Love you Romio\"");
+   let file_path = "C:\\My Documents\\new\\videos";
+   let file_path_2 = r"C:\My Documents\new\videos"; // Raw String
+   println!("{file_path}");
+   println!("{file_path_2}");
 
 }

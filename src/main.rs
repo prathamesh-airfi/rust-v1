@@ -1,16 +1,16 @@
-fn main() {
-    /*
-        Methods 
-            A method is a function that lives on a value.
-            Its an action we can ask the value to execute.
-    */
+fn main() -> () {
+    let numbers: [i32; 6] = [1, 2, 3, 4, 5, 6];
+    dbg!(numbers, numbers);
 
-    let value: i32 = -15;
-    println!("{}", value.abs());
-    println!("Power {}", value.pow(2));
-    println!("Power {}", value.pow(3));
+    let tuple_example: (&str, i32, &str) = ("Prathamesh", 26, "Engineering");
+    let (name, age, department) = tuple_example;
+    // dbg!(tuple_example);
+    dbg!(tuple_example.0);
+    dbg!(tuple_example.1);
+    dbg!(tuple_example.2);
 
-
-    let empty_space = "        empty_space";
-    println!("{}", empty_space.trim());
+    dbg!(name);
+    dbg!(age);
+    dbg!(department);
+    
 }

@@ -1,0 +1,38 @@
+Section 2 - Variables and Mutability
+
+Variables
+
+	- rust use `let` keyword to declare variable
+	- variables are immutable in rust by default 
+	- to make a variable mutable use use ‘mut’ keyword before variable name
+		. let mut scores: i32 = 12;
+	- Variable Shadowing - Means redeclaring a variable. The original variable is replaced by the new one.
+		. let grams_of_protein = "100.34”;
+		. let grams_of_protein = 100.34;
+	- constants are another type of variable who’s  value will never change
+		. variable has block scope whereas constant has global
+		. variables can be allocated runtime whereas as constants are at compile time
+		. Type annotation for variable is optional but for constant its required
+		. constants were used to where the value is known but don’t want to change in entire execution
+	
+
+Type Aliases:
+
+	- Type alias is an alternative name that we can assign for an existing type.
+	- This is particularly useful for improving code. Readability, simplifying complex type signatures and making your codebase easier to  		   maintain.
+	- Syntax:
+		. type Meter = i64;
+		  let track_length : Meter = 100;
+
+
+Compiler Directives
+	- A Compiler Directive is an annotation that tells compiler how to parse the source code.
+		. #[allow(unused_variables)] // for lines or functions
+		. #![allow(unused_variables] // for entire file
+	- prefix an underscore to a variable name to silence the compiler warning about it being unused.
+
+Error Codes
+
+	- Rust provides an online documentation for its error codes to understand them		. https://doc.rust-lang.org/error_codes/error-index.html
+	- Or else we can use below command to understand the error
+		. rustc --explain <error_code>

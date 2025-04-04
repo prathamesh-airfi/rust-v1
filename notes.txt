@@ -1,0 +1,159 @@
+Section 3 - Data Types 
+
+- Every Rust Value has data types.
+- Rust is statically typed language, which means the compiler must know the type of all the variables at compile time.
+- The compiler can infer the types or variables based on their initial assignment.
+
+
+Scaler Types
+	- A Scaler type is a type that holds a single value.
+	-  Rust has 4 scaler types. 1. Integer, 2. Floating point numbers, 3. Booleans, 4. Characters.
+	- An Integer is a whole number
+	- A floating point number is decimal number
+	
+	Integers
+		- Signed integer types supports positive and negative Values. They start with an i(integer).
+		- Unsigned integer types only supports zero and positive values. They can store larger max value in positive direction.
+		   They start with an u(unsigned).
+		
+		Bits
+			- The number after the i or u refers the amount of bits the integer needs in computer memory.
+			- A bit is smallest unit of computer memory. It represents a value of either 0 or 1.
+			- 8 bit is equal to 1 byte
+				- 1024 bytes in a kilobyte
+				- 1024 kilobytes in a megabyte
+				-  1024 megabytes in a gigabyte
+			- an i32 requires 32 bits (4 Bytes) of memory. An f64 requires 64 bits (8 bytes).
+		
+		isize and usize
+			- In Rust, usize and isize are integer type that are architecture-dependent. Their size changes depending on whether the system   			   Is 32-bit or 64-bit
+			
+			- usize 
+				. An unsigned integer type that is used primarily for indexing collections and measuring sizes.
+				. On a 32-bit system: 0 to 4,294,967,295 (2³² - 1)
+				. On a 64-bit system: 0 to 18,446,744,073,709,551,615 (2⁶⁴ - 1)
+				. use case:
+					- Array Indexing, Memory size calculations, Iterating over collections
+
+			- isize
+				. A signed integer type used for scenarios where negative indexing or calculation might occur.
+				. On a 32-bit system: -2,147,483,648 to 2,147,483,647 (-2³¹ to 2³¹ - 1)
+				. On a 64-bit system: -9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 (-2⁶³ to 2⁶³ - 1)
+				. use cases
+					- Offsets (positive or negative)
+					- Pointer arithmetics	
+
+		Why isize and usize exists			
+      - Architecture-Awareness - These types scales with systems word size, making them ideal for memory safe ops.
+			- Memory-Safe Indexing - Using usize for indexing prevents negative indexing, reducing runtime errors.
+			- Pointer Arithmetic - isize is useful for signed pointer calculations, allowing both forward and backward navigation in memory.
+				
+
+
+	Strings - Collection of chars
+		- To print a raw string use r before string literal assignment
+		- string has a type &str;
+		- we can print raw string content stored in a variable using below methods			let text = "Hello\nWorld\t!";
+			- println!("{:?}", var)       => "Hello\nWorld\t!"
+			- dbg!(var)                      => text = "Hello\nWorld\t!"
+			- .escape_debug()         => Hello\nWorld\t!
+
+	Floats
+		- Floating point values are signed, there are no unsigned floats in rust
+		- float types are f32, f64
+		- f64 is default type
+
+	Boolean
+		- rust supports boolean type with values as true and false
+		- type for boolean data type is bool;
+		- let is_sharp: bool = true;
+
+	Array
+		- An array in rust is fixed size collection of elements of same type stored contiguously in memory.
+		- Syntax
+			. let array_name: [Type; size] = [value1, value2, ..., valueN];
+		- Array Initialization 
+			. Explicit Initialization: let colors: [&str; 3] = ["Red", "Green", "Blue"]; 
+			. Repeated Initialization: let zeros: [i32; 5] = [0; 5];  // [0, 0, 0, 0, 0];
+
+	Tuple
+		- Is a collection of multiple values grouped together into a single compound type
+		- Tuple can contain values of different types, making them flexible for building related data.
+		- Tuples have fixed number of elements and cannot be resized.
+		- Elements are accessed by their position using Zero-based indexing.
+		- Like other rust variables, tuples are immutable unless declared as mutable.
+		- A unit is an empty tuple, a tuple without values.
+		- Syntax
+			. let tuple_name: (Type1, Type2, Type3) = (value1, value2, value3);
+				let person: (&str, i32, f64) = ("Prathamesh", 26, 62.24);
+        println!("Person's name {}", person.0);
+        println!("Person's age {}", person.1);
+        println!("Person's weight {}", person.2);
+		
+		- Destructuring a Tuple:
+			. let (name, age, weight) = person;
+	
+	Range
+		- A range is sequence/interval of consecutive values
+		- It is primarily used for iteration in loops or working with collections
+		- Rust provides several ways to define ranges, depending on whether the range is inclusive or exclusive.
+		- Syntax
+
+			# start..end
+				. Type -> Range
+				. Starts from start (inclusive) to end (exclusive)
+				. 1..5 -> 1, 2, 3, 4
+
+			# start..=end	
+				. Type -> RangeInclusive
+				. Start from start (inclusive) to end (inclusive)
+				. 1..=5 -> 1, 2, 3, 4, 5
+
+			# ..end
+				. Type -> RangeTo
+				. Start from the beginning to end (exclusive)
+				. ..5 -> 0, 1, 2, 3, 4
+
+			# ..=end
+				. Type -> RangeToInclusive
+				. Start from the beginning to end (inclusive)
+				. ..=5 -> 0, 1, 2, 3, 4, 5
+
+			# start..
+				. Type -> RangeFrom
+				. Starts from start to infinity (unbounded).
+				. 3.. → 3, 4, 5, ...
+		
+			# ..
+				. Type -> RangeFull
+				. Represents the full range of values.
+				. .. → All possible values
+
+
+Type Casting
+	- Rust uses the as keyword for most type conversions between primitive types.
+	- Casting from float to integer truncates decimals.
+	- Safe Casting: Prefer From and Into for safer conversions.
+	- Explicit Casting: Use as for primitive types.
+	- Pointer Casting: Requires careful use, often in unsafe blocks.
+
+
+Traits :  kind of similar to interfaces in other languages 
+	- A trait is a contract that requires that a type support one or more methods.	
+	- Traits establish consistency between types; methods that represent the same behavior have the same name.
+	- When a type opts in to honoring a trait’s requirements, we say the type implements the trait.
+	- Types can vary in their implementation but still implement the same trait.
+	- A type can choose to opting in to implementing a trait.
+	- A type can implement multiple traits. There are hundreds of traits available in Rust.
+	- A trait is called an interface or protocol in other programming languages.
+
+	Display Trait:
+		- The Display trait requires that a type can be represented as a user-friendly, readable string.
+		- The Display trait mandates a format method that returns the string.
+		- When we use the {} interpolation syntax, Rust relies on the format method.
+		- Integers, floats, and booleans all important the Display trait so we are able to interpolate them with curly braces.
+		- It is not always clear how a complex type should be represented as a piece of text.
+		- Not all types implement the Display trait. One example is the array type.
+		 
+	Debug Trait:
+		- debug should format the output in a programmer-facing, debugging context.

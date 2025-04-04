@@ -1,17 +1,35 @@
 fn main() {
-    /* Simple Match */
-    let evaluation = true;
-    let value = match evaluation {
-        true => 10,
-        _ => 20,
-    };
-    println!("{value}");
+    let mut count = 0;
 
-    /* Match with multiple values and condition */
-    let number = 12;
-    match number {
-        2 | 4 | 6 | 8 => println!("{number} is even"),
-        val if val % 2 == 0 => println!("{number} is even"),
-        _ => println!("{number} is odd"),
+    /* Loop Statement */
+    loop {
+        count += 1;
+
+        if count == 3 {
+            continue;
+        }
+
+        println!("Hello There!");
+
+        if count == 5 {
+            break;
+        }
+    }
+
+    /* While loop */
+    let mut count = 0;
+    while count < 5 {
+        println!("Hello Prathamesh");
+        count += 1;
+    }
+
+    println!("fibonacci till 10 : {}", calculate_fibonaccie(10))
+}
+
+fn calculate_fibonaccie(num: i32) -> i32 {
+    match num {
+        0 => 0,
+        1 | 2 => 1,
+        _ => calculate_fibonaccie(num - 1) + calculate_fibonaccie(num - 2),
     }
 }

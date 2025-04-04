@@ -1,0 +1,79 @@
+
+Blocks In Function
+	- A Block is a set of statements and expressions enclosed within {} braces. 
+	- Blocks group multiple statements and expressions using {}.
+	- The last expression (without a semicolon) in a block determines its return value.	
+  - Blocks are used in functions, control flow, and for creating scopes.
+	- Blocks can be nested, and each has its own scope.
+	- Structure of Block
+		{
+            // Statements
+            // Expressions
+    }
+	
+  - A function’s body is always a block.
+      fn greet() {
+          // This is a block
+          println!("Hello, Rustacean!");
+      }
+	
+  - In Rust, blocks themselves are expressions, meaning they can return a value.
+	
+      fn main() {
+        let result = {
+            let a = 5;
+            let b = 3;
+            a + b  // Last expression → returns 8 // No semicolon after a + b makes it an expression, not a statement.
+        };
+            
+        println!("Result: {}", result);  // Output: Result: 8
+    }
+
+	- Blocks are used with if, else, match, and loops.
+    fn main() {
+        let number = 7;
+    
+        if number > 5 {
+            println!("Greater than 5");
+        } else {
+            println!("5 or less");
+        }
+    }
+
+	- Blocks can be used to conditionally return values:
+	    fn main() {
+        let condition = true;
+    
+        let number = if condition {
+            10  // Returns 10 if condition is true
+        } else {
+            20  // Returns 20 if condition is false
+        };
+    
+        println!("Number: {}", number);  // Output: Number: 10
+    }
+
+	- Blocks can be nested for scoping and control flow:
+    fn main() {
+        let x = 5;
+    
+        {
+            let y = 10;
+            println!("x + y = {}", x + y);  // Output: x + y = 15
+        }
+    
+        // println!("{}", y);  // ❌ Error: `y` is out of scope here
+    }
+    
+	- A function can return the result of a block:
+    fn calculate() -> i32 {
+        {
+            let a = 2;
+            let b = 3;
+            a * b  // Returns 6
+        }
+    }
+    
+    fn main() {
+        println!("Result: {}", calculate());  // Output: Result: 6
+    }

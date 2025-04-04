@@ -1,0 +1,94 @@
+Section 4 - Functions
+
+A Function is a sequence of steps to be executed in order. 
+These are the fundamental building blocks used to organize and reuse code.
+
+  - Function names use snake_case.
+  - Parameters are immutable by default.
+  - Return values are implicit (without ;) or explicit with return.
+  - main function is the entry point of Rust programs.
+  - Use ! for functions that never return.
+
+
+Syntax -
+    fn function_name(parameters) -> return_type { 
+        // function body 
+    }
+
+
+Terminologies
+	Parameters - Is a name for an expected input to a function.
+	Argument - Is the concrete value passed in for a parameter when the function is invoked.
+	Return Value - Is the output of a function.
+
+
+
+Types Of Functions
+  Simple Function (No Parameter, No Return)
+
+    fn greet() {
+        println!("Hello, Rustacean!");
+    }
+    
+  Function with Parameters
+    
+      fn add(a: i32, b: i32) {
+          println!("Sum: {}", a + b);
+      }
+
+  Function with Return Value
+    * If you add a semicolon (;) after a * b, it becomes a statement, not a return.
+    * To explicitly return, use return:
+
+      fn multiply(a: i32, b: i32) -> i32 {
+          a * b  // No semicolon → Implicit return
+      }
+
+      fn subtract(a: i32, b: i32) -> i32 {
+          return a - b;  // Explicit return
+      }
+            
+
+    * 	Default Return Type () -> Unit Type
+      If a function doesn’t return anything, it implicitly returns () (the unit type).
+      
+      fn say_hello() {
+          println!("Hello!");  // Implicitly returns ()
+      }
+
+
+  Functions with Multiple Parameters
+
+        fn describe(name: &str, age: u8) {
+            println!("{} is {} years old.", name, age);
+        }
+
+  Function with Mutable Parameters
+    * By default, function parameters are immutable. To modify them, use mut.
+    
+      fn increase(mut num: i32) -> i32 {
+          num += 1;
+          num
+      }
+    
+ 	Nested Functions
+     
+      fn outer() {
+          fn inner() {
+              println!("Inside inner function.");
+          }
+          inner();
+      }
+        
+
+  Diverging Functions (! Return Type)
+    A diverging function never returns. It has the return type !.
+    
+      fn never_returns() -> ! {
+          panic!("This function will never return!");
+      }
+      
+      fn main() {
+          never_returns();  // Program panics here
+      }
+ 

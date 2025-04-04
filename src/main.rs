@@ -1,16 +1,22 @@
 fn main() -> () {
-    let numbers: [i32; 6] = [1, 2, 3, 4, 5, 6];
-    dbg!(numbers, numbers);
+    let week_days = 0..7;
+    let letters = 'a'..='z';
 
-    let tuple_example: (&str, i32, &str) = ("Prathamesh", 26, "Engineering");
-    let (name, age, department) = tuple_example;
-    // dbg!(tuple_example);
-    dbg!(tuple_example.0);
-    dbg!(tuple_example.1);
-    dbg!(tuple_example.2);
+    for day in week_days {
+        print!("{day} ")
+    }
 
-    dbg!(name);
-    dbg!(age);
-    dbg!(department);
+    println!("\n");
+
+    for char in letters {
+        print!("{char}  ");
+    }
     
+    println!("\n");
+
+    // range inclusive
+    let a = 1..=31; // 0 -> 31
+
+    // range exclusive
+    let b = 1..31; // 0 -> 30
 }

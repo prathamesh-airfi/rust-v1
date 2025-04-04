@@ -1,0 +1,45 @@
+Section 5 - Control Flow
+
+Control Flow refers to how a program will execute (the flow of program)
+
+----------------
+| IF Statement |
+----------------
+
+- Conditions in Rust must be boolean (true/false)
+- No need for parentheses around  conditions
+	
+	1.	Basic IF Statement
+    fn main() {
+        let number = 10;
+    
+        if number > 5 {
+            println!("Number is greater than 5");
+        }
+    }	
+
+
+	2. 	IF Else Statement
+	  fn main() {
+        let number = 3;
+    
+        if number % 2 == 0 {
+            println!("Even number");
+        } else {
+            println!("Odd number");
+        }
+    }
+
+
+	3.	IF Else IF Else ladder
+	  fn main() {
+        let number = 0;
+    
+        if number > 0 {
+            println!("Positive");
+        } else if number < 0 {
+            println!("Negative");
+        } else {
+            println!("Zero");
+        }
+    }

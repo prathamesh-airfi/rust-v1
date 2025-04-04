@@ -1,0 +1,56 @@
+
+Section 1 - Getting Started with RUST
+
+	- Rush is systems programming language
+	- System Programming refers a category of languages that are optimized for situations 
+    where resources (memory and cpu) are limited
+	- Rust can build
+		- clis
+		- build tools
+		- device drivers
+		- databases
+		- programming languages
+		- web apps
+		- os
+
+	- Rust developers are called Rustaceans
+	- Rust is compiled language
+	- Compiler is a program that translates our source code into executable
+	- cargo is cli tool that helps manage rust projects
+
+	Syntax
+		- Rush is strictly typed
+		- Case sensitive
+		- Space sensitive
+		- Symbols matter
+		- Line breaks matter
+
+
+Command
+	- check cargo version
+		. cargo --version / cargo -V
+	- check rust version
+		. rustc --version / rustc -V
+	- update rust version
+		. rustup update
+	- uninstall rust
+		. rustup self uninstall
+	- open rust doc
+		. rustup doc
+	- compile a single file
+		. rustc file.rs
+	- format a single file
+		. rustfmt file.rs
+	- format whole project 
+		. cargo fmt	
+	- build entire project (debug/release)
+		. cargo build (Debug mode for developers) / cargo b
+		. cargo build —-release (Final release for production ) / cargo b -r
+	- clean the project (remove cache and prebuild code)
+		. cargo clean
+	- Run the project
+		. cargo run / cargo r
+		. cargo run/r —quiet/-q (runs project with no extra info printed on console)
+	- Check for compilation error
+		. cargo check
+	- Learn about compilation errors		. rustc --explain <error_code>

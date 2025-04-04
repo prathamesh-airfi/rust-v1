@@ -1,35 +1,49 @@
 fn main() {
-    let mut count = 0;
+    println!(
+        "color code for red : {}",
+        color_to_number_without_match("red")
+    );
+    println!("color code for red : {}", color_to_number_with_match("red"));
 
-    /* Loop Statement */
-    loop {
-        count += 1;
-
-        if count == 3 {
-            continue;
-        }
-
-        println!("Hello There!");
-
-        if count == 5 {
-            break;
-        }
-    }
-
-    /* While loop */
-    let mut count = 0;
-    while count < 5 {
-        println!("Hello Prathamesh");
-        count += 1;
-    }
-
-    println!("fibonacci till 10 : {}", calculate_fibonaccie(10))
+    println!("Factorial of 5 is {}", recursive_factorial(5));
+    println!("Factorial of 5 is {}", factorial(5));
+    println!("Factorial of 4 is {}", factorial(4));
 }
 
-fn calculate_fibonaccie(num: i32) -> i32 {
-    match num {
-        0 => 0,
-        1 | 2 => 1,
-        _ => calculate_fibonaccie(num - 1) + calculate_fibonaccie(num - 2),
+fn color_to_number_without_match(color: &str) -> i32 {
+    if color == "red" {
+        1
+    } else if color == "green" {
+        2
+    } else if color == "blue" {
+        3
+    } else {
+        0
     }
+}
+
+fn color_to_number_with_match(color: &str) -> i32 {
+    match color {
+        "red" => 1,
+        "green" => 2,
+        "blue" => 3,
+        _ => 0,
+    }
+}
+
+fn recursive_factorial(num: u32) -> u32 {
+    match num {
+        0 | 1 => 1,
+        _ => num * recursive_factorial(num - 1),
+    }
+}
+
+fn factorial(mut num: u32) -> u32 {
+    let mut result: u32 = num;
+    while num > 1 {
+        result *= num - 1;
+        num -= 1
+    }
+
+    return result;
 }

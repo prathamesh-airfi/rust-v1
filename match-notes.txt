@@ -1,0 +1,46 @@
+
+Match Statement (Pattern Matching)
+
+- Match is a more powerful and safer alternative to switch.
+- Patterns can match values, ranges, or multiple values (2 | 3).
+- _ is a catch-all pattern for unmatched cases.
+- Safer than switch because all cases must be handled.
+
+
+fn main() {
+    let number = 2;
+
+    match number {
+        1 => println!("One"),
+        2 | 3 => println!("Two or Three"),  // Multiple patterns
+        4..=6 => println!("Between Four and Six"),  // Range
+        _ => println!("Something else"),  // Catch-all
+    }
+}
+
+fn main() {
+    let num = 8;
+
+    // With Guard
+    match num {
+        val if val % 2 == 0 => println!("{val} is an Even Number"),
+        val if val % 2 != 0 => println!("{val} is an Odd Number"),
+        _ => unreachable!(),
+    }
+
+    // With Arm Body
+    // A Pattern or arm is one possible option to compare the match value against
+    match num {
+        val => {
+            if val % 2 == 0 {
+                println!("{val} is an Even Number")
+            }
+        }
+        val => {
+            if val % 2 != 0 {
+                println!("{val} is an Odd Number")
+            }
+        }
+        _ => unreachable!(),
+    }
+}

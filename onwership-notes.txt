@@ -1,0 +1,84 @@
+06 - OWNERSHIP
+
+-------------------------
+| Q. What is ownership? |
+-------------------------
+
+  - Ownership is set of rules that the compiler checks for to ensure the program will be free of memory errors.
+  - Its ideal to free memory when it is no longer in use.
+  - Rust introduces new paradigm: Ownership.
+  - Ownership is set of rules on how Rust manages your computer's memory.
+  - The Rust compiler does not compile the program if an owenrship rule is violated.
+  - It gives best of all worlds: The speed of a language like C but with less room for error.
+
+  - The Owner is who/what is responsible for cleaning up a piece of data when it is no longer in use.
+  - Every value in rust program has one owner.
+  - The owner can change over the course of the program, but there is only 1 owner for a value at a time.
+  - The Owner is usually a name.
+    > A variable can be a owner.
+    > A parameter can be a owner.
+  - The Ownership also extends to composite types that own their elements.
+    > A tuple and array own their values.
+
+
+-----------------------
+| Stack & Heap Memory |
+-----------------------
+
+  - The Stack & Heap are two different parts/regions of the computer's memory.
+  - The Stack and Heap read and write data in different ways that offer advantages & disadvantages.
+  
+  ---------
+  | Stack |
+  ---------
+    - A stack stores value in sequential order it receives them.
+    - A stack is last in, first out. The last item added is the first one removed.
+    - The technical term for adding data is pushing onto the stack.
+    - The technical term for removing data is pulling off the stack. 
+    - All stack data has fixed, consistent size that is know at compile time.
+    - Data types like integers, floating-points, Booleans, Characters and array has fixed size, 
+      Rust stores them on the stack at runtime.
+    - The piece of data on stack will not grow or shrink in size as program runs.  
+    - A stack stores data in sequence, so there is less "jumping around" from point to point.
+
+  --------
+  | Heap |
+  --------
+    - The heap is a large area of storage space. Think of it like warehouse.
+    - The heap is for data whose size is not known at compile time.
+    - When Rust program needs dynamic space, it requests it from the heap. 
+      A program called the memory allocator finds empty space that is large enought to store the data.
+    - Allocation on heap is slower than pusing to the stack. The memory allocator has to spend time searching
+      for an open spot large enough to fit the data.
+    - Accesing data is faster on stack than the heap as well. With a heap, the program has to follow the pointer
+      to find the memory address.
+
+  -------------
+  | Reference |
+  -------------
+    - The memory allocator returns a reference, which is an address.
+    - The reference points to the memory address of the data.
+    - We can store a reference in a variable in a Rust program. References have a fixed size. 
+      So rust stores them on the stack.
+
+  -------------
+  | Ownership |
+  -------------
+    - The purpose of the ownership is to assign responsibility for deallocating memory (primarily heap memory)
+    - Ownership is compiler feature for reducing duplicate heap data and cleaning up heap data that is no longer needed.
+
+  --------------------
+  | Move & Ownership |
+  --------------------
+    - A move is the transfer of ownership from one owner to another.
+     	
+    drop()
+        * Rust calls drop() function automatically at the end of block to clear the memory allocated by owners of heap data.
+        * drop(variable_name); // We can even call this function manually
+		
+	  clone()
+        * When we want to duplicate heap data and do not move ownership we use clone() method explicitly.
+        * Clone trait is implemented in Heap Allocated memory variables.
+        * E.g String::from(“Pratham”).clone()
+
+

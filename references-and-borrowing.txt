@@ -1,0 +1,26 @@
+--------------------------
+| References & Borrowing |
+--------------------------
+
+  - A reference is an memory address to the original value.
+  - References must not outlive their referent.
+  - A reference can hold the address of a value either stored in stack or heap.
+  - Reference and pointer are not same, references are like sub category of pointer.
+  - In Rust references guarantees up to point to a valid value for the life or existence of reference,
+    However pointers in other languages does not have a guarantee.
+  - Borrowing means using something without taking ownership of it.
+  - A reference allows a program to usa a value without moving ownership, this act is known as Borrowing in Rust.
+
+
+----------------------------
+| Dereference Operator (*) |
+----------------------------
+  
+  - To Dereference means to access the data at a memory location that the reference points to.
+  - The Rust implements the Display trait on References, so it automatically dereferences the reference variables.
+  - To dereference manually we use * operator with reference variable.
+
+  * String - A Dynamic piece of text stored on the Heap at runtime.
+	* &String (“ref String”) - A Reference to the Heap String.
+	* str - A Hardcoded, read-only piece of text encoded in memory.
+	* &str (“ref str”) - A Reference to the text in the memory that has loaded the binary file.

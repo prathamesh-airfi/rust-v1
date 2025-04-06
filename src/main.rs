@@ -1,18 +1,30 @@
 fn main() {
-    let name = "Hello There!";
-    let name_ref = &name;
-    let name_ref_1 = &name_ref;
-    let name_ref_2 = &name_ref_1;
+    /* Mutating but transferring the ownership */
+    let burger = String::from("Burger");
+    add_fries(burger);
+    // burger.push_str("sf"); // Error
 
-    /* Manual Dereferencing */
-    println!("{}", *name_ref);
+    /* Mutating without transferring the ownership */
+    let mut pizza = String::from("Pizza");
+    add_fries_2(&mut pizza);
+    pizza.push_str("string"); // Not error
 
-    /* Automatic Dereferencing */
-    println!("{}", name_ref_2);
+    let mut name = returning_function();
+    name.push('c');
+}
 
-    /* Actual Address Printing */
-    println!("{:p}", name);
-    println!("{:p}", name_ref);
-    println!("{:p}", name_ref_1);
-    println!("{:p}", name_ref_2);
+// Transfer of ownership
+fn add_fries(mut meal: String) {
+    meal.push_str(" And Fries");
+    println!("{meal}")
+}
+
+// Without Transfer of ownership
+fn add_fries_2(meal: &mut String) {
+    meal.push_str(" And Fries");
+    println!("{meal}");
+}
+
+fn returning_function() -> String {
+    String::from("Returning Value")
 }

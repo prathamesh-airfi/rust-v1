@@ -1,30 +1,24 @@
 fn main() {
-    /* Mutating but transferring the ownership */
-    let burger = String::from("Burger");
-    add_fries(burger);
-    // burger.push_str("sf"); // Error
+    let is_concert = true;
+    let is_event = is_concert;
+    // No ownership is moved
+    println!("{} {}", is_concert, is_event);
 
-    /* Mutating without transferring the ownership */
-    let mut pizza = String::from("Pizza");
-    add_fries_2(&mut pizza);
-    pizza.push_str("string"); // Not error
+    let sushi = "Salmon";
+    let dinner = sushi;
+    // No ownership is moved
+    println!("{} {}", sushi, dinner);
 
-    let mut name = returning_function();
-    name.push('c');
+    let sushi = String::from("Salmon");
+    let dinner = sushi;
+    // Ownership is moved
+    // println!("{} {}", sushi, dinner);
+
+    let mut sushi = String::from("Salmon");
+    eat_meal(&mut sushi);
+    println!("{sushi}")
 }
 
-// Transfer of ownership
-fn add_fries(mut meal: String) {
-    meal.push_str(" And Fries");
-    println!("{meal}")
-}
-
-// Without Transfer of ownership
-fn add_fries_2(meal: &mut String) {
-    meal.push_str(" And Fries");
-    println!("{meal}");
-}
-
-fn returning_function() -> String {
-    String::from("Returning Value")
+fn eat_meal(meal: &mut String) {
+    meal.clear();
 }

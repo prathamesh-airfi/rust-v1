@@ -1,0 +1,73 @@
+----------------------------------------------
+| Immutable and Mutable Reference Parameters |
+----------------------------------------------
+
+In rust we can expect 4 types of parameters as function arguments
+
+  * Normal Immutable with transferred ownership (meal: String)
+    In this case, ownership of the string is transferred to the function.
+    e.g /* fn my_function(meal: String) { ... } */
+
+  * Normal Mutable with transferred ownership (mut meal: String)
+    Similar to the previous case, ownership is transferred, but the parameter is also mutable within the function.
+    e.g /* fn my_function(mut meal: String) { ... } */
+
+  * Borrowing Immutable reference without transferring ownership - (meal: &String)
+    Here, a reference to the String is borrowed, without transferring ownership.
+    e.g /* fn my_function(meal: &String) { ... } */
+
+  * Borrowing Mutable reference without transferring ownership - (meal: &mut String)
+    In this case, a mutable reference to the String is borrowed, allowing the function to modify the original value.
+    e.g /* fn my_function(meal: &mut String) { ... } */
+
+-------------------------------------------
+| Multiple Mutable & Immutable References |
+-------------------------------------------
+  - Rust Permits any number of immutable references to the same value at the same time.
+  - In Rust a value can have only 1 Mutable reference at a time.
+
+-------------------------------------------------
+| Ownership with Immutable & Mutable References |
+-------------------------------------------------
+  - The immutable references implements the copy trait. While mutable reference does not.
+  - Rules of ownership are applied on mutable references.
+  - Mutable reference and Immutable reference cannot coexist.
+  - One mutable reference or many immutable references. 
+
+  /*
+    fn main() {
+      let mut name = String::from("Prathamesh");
+      let ref1 = &mut name;
+      let ref2 = ref1;
+      println!("{ref1} {ref2}"); // Will Generate Error
+    }
+  */
+
+
+----------------------
+| Dangling Reference |
+----------------------
+  - Dangling references, also known as dangling pointers, occur when a reference or pointer points to memory that has already been deallocated or gone out of scope.
+  - In languages like C and C++, dangling references can lead to undefined behavior, crashes, or security vulnerabilities.
+  - However, Rust is designed to prevent dangling references through its ownership and borrowing system.
+    * Here's an example of how Rust prevents dangling references:
+
+    /*
+      fn main() {
+          let s1 = String::from("hello");
+          let len = calculate_length(&s1);
+          println!("Length of '{}' is {}.", s1, len);
+
+          // Attempt to create a dangling reference
+          let reference_to_nothing;
+          {
+              let s2 = String::from("hello");
+              reference_to_nothing = &s2;
+          }
+          println!("{}", reference_to_nothing); // Error!
+      }
+
+      fn calculate_length(s: &String) -> usize {
+          s.len()
+      }
+    */

@@ -1,0 +1,23 @@
+---------
+| Slice |
+---------
+
+  - A collection type is one that can hold multiple values. Arrays, tuples and strings are collection types.
+  - A slice is reference to the portion/sequence of a collection type. Its subcategory of references.
+  - A string slice is a reference to a sequence of characters from a string.
+  - An array slice is a reference to a sequence of elements from an array.
+  - As a reference, slice doesn't take ownership of collection. 
+  
+  
+Slice Example
+    . String Slice 
+    
+        fn get_str_len(text: &str) -> usize {
+            text.len()
+        }
+        
+    . Array Slice
+    
+        fn get_arr_len(arr: &[i32]) -> usize {
+            arr.len()
+        }

@@ -1,0 +1,8 @@
+* Struct *
+
+  1. Rust has 3 types of structs
+    - Named Field struct
+    - Tuple-Like struct
+    - Unit-Like struct
+
+  2.

@@ -1,62 +1,42 @@
-struct TaylorSwiftSong {
-    title: String,
-    release_year: u32,
-    duration_secs: u32,
+#[derive(Debug)]
+struct Computer {
+    cpu: String,
+    memory: u32,
+    hard_drive_capacity: u32,
 }
 
-/* Associated Methods */
-impl TaylorSwiftSong {
-    fn new(title: &str, release_year: u32, duration_secs: u32) -> Self {
+impl Computer {
+    fn new(cpu: String, memory: u32, hard_drive_capacity: u32) -> Self {
         Self {
-            title: title.to_string(),
-            release_year,
-            duration_secs,
+            cpu,
+            memory,
+            hard_drive_capacity,
         }
     }
-}
 
-/* Instance Methods */
-impl TaylorSwiftSong {
-    /* Immutable struct value (self parameter takes ownership) (self: Self) */
-    /* Mutable struct value  (self parameter takes ownership, has permission to mutate) (self: mut Self) */
-    /* Immutable reference to struct instance (No Ownership Moved) (self: &Self) */
-    /* mutable reference to struct instance (No Ownership Moved) (self: &mut Self) */
-    fn display_song_info(&self) {
-        println!("\n");
-        println!("Title: {}", self.title);
-        println!("Year Since Release : {}", self.year_since_release());
-        println!("Duration: {} seconds", self.duration_secs);
-        println!("---------------------------------------------")
+    fn upgrade_cpu(&mut self, new_cpu: String) -> &mut Self {
+        self.cpu = new_cpu;
+        self
     }
 
-    fn double_length(&mut self) {
-        self.duration_secs *= 2;
+    fn upgrade_memory(&mut self, new_memory: u32) -> &mut Self {
+        self.memory = new_memory;
+        self
     }
 
-    fn is_longer_than(&self, other: &Self) -> bool {
-        self.duration_secs > other.duration_secs
-    }
-
-    fn year_since_release(&self) -> u32 {
-        2025 - self.release_year
+    fn upgrade_hard_drive_capacity(&mut self, new_capacity: u32) -> &mut Self {
+        self.hard_drive_capacity = new_capacity;
+        self
     }
 }
 
 fn main() {
-    let mut blank_space = TaylorSwiftSong {
-        title: String::from("Blank Space"),
-        release_year: 2014,
-        duration_secs: 231,
-    };
+    let mut computer = Computer::new("M3 Max".to_string(), 16, 512);
 
-    let all_too_well = TaylorSwiftSong::new("All Too Well", 2025, 234);
-    blank_space.display_song_info();
-    blank_space.double_length();
-    blank_space.display_song_info();
-    all_too_well.display_song_info();
+    computer
+        .upgrade_cpu(String::from("M4 Max"))
+        .upgrade_memory(32)
+        .upgrade_hard_drive_capacity(1024);
 
-    println!(
-        "is blank_space is longer than all_too_well : {}",
-        blank_space.is_longer_than(&all_too_well)
-    );
+    println!("{:#?}", computer);
 }

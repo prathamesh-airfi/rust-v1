@@ -5,4 +5,12 @@
     - Tuple-Like struct
     - Unit-Like struct
 
-  2.
+
+* Methods with multiple parameters *
+fn is_longer_than(&self, other: &Self) {
+  self.duration_secs > other.duration_secs
+}
+
+* Associated Function *
+  - Associated functions are functions that are attached to a type.
+  - A Constructor is a function that returns a new instance of a type.

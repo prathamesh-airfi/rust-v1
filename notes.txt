@@ -14,3 +14,14 @@ fn is_longer_than(&self, other: &Self) {
 * Associated Function *
   - Associated functions are functions that are attached to a type.
   - A Constructor is a function that returns a new instance of a type.
+
+
+* Tuple Struct *
+  - A tuple is a struct that assigns each piece of data an order in line rather than a name.
+  - 
+    struct ShortDuration(u32, u32);
+
+* Unit like struct *
+  - A unit is an empty tuple, a tuple without values
+  -
+    struct EmptyStruct;

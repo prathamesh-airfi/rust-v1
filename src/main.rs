@@ -1,42 +1,17 @@
-#[derive(Debug)]
-struct Computer {
-    cpu: String,
-    memory: u32,
-    hard_drive_capacity: u32,
-}
+// Hours, Minutes
+struct ShortDuration(u32, u32);
 
-impl Computer {
-    fn new(cpu: String, memory: u32, hard_drive_capacity: u32) -> Self {
-        Self {
-            cpu,
-            memory,
-            hard_drive_capacity,
-        }
-    }
+// Years, Months
+struct LongDuration(u32, u32);
 
-    fn upgrade_cpu(&mut self, new_cpu: String) -> &mut Self {
-        self.cpu = new_cpu;
-        self
-    }
-
-    fn upgrade_memory(&mut self, new_memory: u32) -> &mut Self {
-        self.memory = new_memory;
-        self
-    }
-
-    fn upgrade_hard_drive_capacity(&mut self, new_capacity: u32) -> &mut Self {
-        self.hard_drive_capacity = new_capacity;
-        self
-    }
-}
+struct EmptyStruct;
 
 fn main() {
-    let mut computer = Computer::new("M3 Max".to_string(), 16, 512);
+    let work_shift = ShortDuration(8, 30);
+    println!("{} hours {} minutes", work_shift.0, work_shift.1);
 
-    computer
-        .upgrade_cpu(String::from("M4 Max"))
-        .upgrade_memory(32)
-        .upgrade_hard_drive_capacity(1024);
+    let era = LongDuration(5, 3);
+    println!("{} Years {} Months", era.0, era.1);
 
-    println!("{:#?}", computer);
+    let empty = EmptyStruct;
 }

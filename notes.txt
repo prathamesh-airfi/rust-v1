@@ -1,0 +1,14 @@
+** Enums (Enumeration) **
+
+An enum is a type that represents a set of possible values. Each possible value is called as variant.
+
+Syntax:
+
+    enum CardSuit {
+      Hearts,
+      Diamonds,
+      Spades,
+      Clubs
+    }
+
+    let first_card = CardSuit::Hearts;

@@ -1,17 +1,15 @@
 #[derive(Debug)]
-enum CardSuit {
-    Hearts,
-    Diamonds,
-    Spades,
-    Clubs,
-}
-
-struct Card {
-    rank: String,
-    suid: CardSuit,
+enum PaymentMethodType {
+    CreditCard(String),
+    DebitCard(String),
+    PayPal(String, String),
 }
 
 fn main() {
-    let first_card = CardSuit::Hearts;
-    println!("{first_card:#?}")
+    let visa = PaymentMethodType::CreditCard(String::from("1234"));
+    let master_card = PaymentMethodType::DebitCard(String::from("1234"));
+    let paypal = PaymentMethodType::PayPal(String::from("1234"), String::from("12345"));
+    println!("{visa:#?}");
+    println!("{master_card:#?}");
+    println!("{paypal:#?}");
 }

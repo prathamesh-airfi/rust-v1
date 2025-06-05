@@ -1,17 +1,48 @@
-// Hours, Minutes
-struct ShortDuration(u32, u32);
+#[derive(Debug)]
+struct Flight {
+    origin: String,
+    price: f64,
+    passengers: u32,
+    destination: String,
+}
 
-// Years, Months
-struct LongDuration(u32, u32);
+impl Flight {
+    fn new(origin: &str, destination: &str, passengers: u32, price: f64) -> Self {
+        Self {
+            price,
+            passengers,
+            origin: String::from(origin),
+            destination: String::from(destination),
+        }
+    }
+}
 
-struct EmptyStruct;
+impl Flight {
+    fn change_destination(&mut self, destination: &str) {
+        self.destination = String::from(destination)
+    }
+
+    fn increase_price(&mut self) {
+        self.price = self.price * 1.20;
+    }
+
+    fn itinerary(&self) {
+        println!("{} -> {}", self.origin, self.destination)
+    }
+}
 
 fn main() {
-    let work_shift = ShortDuration(8, 30);
-    println!("{} hours {} minutes", work_shift.0, work_shift.1);
+    let mut flight = Flight::new("Surat", "Pune", 2, 12.90);
+    flight.change_destination("Mumbai");
+    flight.increase_price();
+    flight.itinerary();
+    println!("{flight:#?}");
 
-    let era = LongDuration(5, 3);
-    println!("{} Years {} Months", era.0, era.1);
+    let mut goa_flight = Flight {
+        origin: "Delhi".to_string(),
+        destination: "Goa".to_string(),
+        ..flight
+    };
 
-    let empty = EmptyStruct;
+    println!("{:#?}", goa_flight)
 }

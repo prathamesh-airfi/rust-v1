@@ -12,3 +12,15 @@ Syntax:
     }
 
     let first_card = CardSuit::Hearts;
+
+
+    struct Credentials {
+        username: String,
+        password: String,
+    }
+
+    enum PaymentMethodType {
+        CreditCard(String),
+        DebitCard(String),
+        PayPal(Credentials),
+    }

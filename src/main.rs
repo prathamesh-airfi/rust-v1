@@ -1,15 +1,22 @@
 #[derive(Debug)]
+struct Credentials {
+    username: String,
+    password: String,
+}
+
+#[derive(Debug)]
 enum PaymentMethodType {
     CreditCard(String),
     DebitCard(String),
-    PayPal(String, String),
+    PayPal(Credentials),
 }
 
 fn main() {
-    let visa = PaymentMethodType::CreditCard(String::from("1234"));
-    let master_card = PaymentMethodType::DebitCard(String::from("1234"));
-    let paypal = PaymentMethodType::PayPal(String::from("1234"), String::from("12345"));
-    println!("{visa:#?}");
-    println!("{master_card:#?}");
-    println!("{paypal:#?}");
+    let paypal_credentials = Credentials {
+        username: String::from("pratham@gmail.com"),
+        password: String::from("1234"),
+    };
+
+    let paypal_account = PaymentMethodType::PayPal(paypal_credentials);
+    println!("{:#?}", paypal_account);
 }

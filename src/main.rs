@@ -1,26 +1,24 @@
-enum LaundryCycle {
-    Cold,
-    Hot { temperature: u32 },
-    Delicate(String),
+#[derive(Debug)]
+enum OnlineOrderStatus {
+    Ordered,
+    Packed,
+    Shipped,
+    Delivered,
 }
 
-impl LaundryCycle {
-    fn wash_laundry(&self) {
+impl OnlineOrderStatus {
+    fn check(&self) {
         match self {
-            LaundryCycle::Cold => println!("Running the laundry with cold temperature"),
-            LaundryCycle::Hot { temperature } => {
-                println!("Running the laundry with temperature of {temperature}")
+            OnlineOrderStatus::Delivered => {
+                println!("Your item has been delivered")
             }
-
-            LaundryCycle::Delicate(fabric_type) => {
-                println!("Running the laundry with delicate cycle for {fabric_type}")
+            other_status => {
+                println!("Your item is {other_status:?}")
             }
         }
     }
 }
 
 fn main() {
-    LaundryCycle::Cold.wash_laundry();
-    LaundryCycle::Hot { temperature: 14 }.wash_laundry();
-    LaundryCycle::Delicate("Cotton".to_string()).wash_laundry();
+    OnlineOrderStatus::Shipped.check();
 }

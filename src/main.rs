@@ -1,23 +1,24 @@
-enum OperatingSystem {
-    Windows,
-    MacOS,
-    Linux,
+enum LaundryCycle {
+    Cold,
+    Hot { temperature: u32 },
+    Delicate(String),
 }
 
 fn main() {
-    let my_computer = OperatingSystem::Linux;
-    let age = years_since_releases(my_computer);
-    println!("My computer's operating system is {age} years old");
-
-    let dads_computer = OperatingSystem::MacOS;
-    let age = years_since_releases(dads_computer);
-    println!("Dad's computer's operating system is {age} years old");
+    wash_laundry(LaundryCycle::Cold);
+    wash_laundry(LaundryCycle::Hot { temperature: 14 });
+    wash_laundry(LaundryCycle::Delicate("Cotton".to_string()));
 }
 
-fn years_since_releases(os: OperatingSystem) -> u32 {
-    match os {
-        OperatingSystem::Windows => 39,
-        OperatingSystem::MacOS => 23,
-        OperatingSystem::Linux => 34,
+fn wash_laundry(cycle: LaundryCycle) {
+    match cycle {
+        LaundryCycle::Cold => println!("Running the laundry with cold temperature"),
+        LaundryCycle::Hot { temperature } => {
+            println!("Running the laundry with temperature of {temperature}")
+        }
+
+        LaundryCycle::Delicate(fabric_type) => {
+            println!("Running the laundry with delicate cycle for {fabric_type}")
+        }
     }
 }

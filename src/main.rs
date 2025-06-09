@@ -1,22 +1,33 @@
 #[derive(Debug)]
-struct Credentials {
-    username: String,
-    password: String,
+enum Beans {
+    Pinto,
+    Black,
 }
 
 #[derive(Debug)]
-enum PaymentMethodType {
-    CreditCard(String),
-    DebitCard(String),
-    PayPal(Credentials),
+enum Meat {
+    Chicken,
+    Steak,
+}
+
+#[derive(Debug)]
+enum RestaurantItem {
+    Burrito { meat: Meat, beans: Beans },
+    Bowl { meat: Meat, beans: Beans },
+    VeganPlate,
 }
 
 fn main() {
-    let paypal_credentials = Credentials {
-        username: String::from("pratham@gmail.com"),
-        password: String::from("1234"),
+    let lunch = RestaurantItem::Burrito {
+        meat: Meat::Steak,
+        beans: Beans::Pinto,
     };
+    let dinner = RestaurantItem::Bowl {
+        meat: Meat::Chicken,
+        beans: Beans::Black,
+    };
+    let abandoned_meal = RestaurantItem::VeganPlate;
 
-    let paypal_account = PaymentMethodType::PayPal(paypal_credentials);
-    println!("{:#?}", paypal_account);
+    println!("Lunch was {lunch:?} and dinner was {dinner:?}");
+    println!("Nobody eat {abandoned_meal:?}");
 }

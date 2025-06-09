@@ -24,3 +24,11 @@ Syntax:
         DebitCard(String),
         PayPal(Credentials),
     }
+
+
+/* The If let construct */
+    The if let construct combines an if statement with a variable declaration
+
+    if let milk = Milk::Whole {
+        println!("I got {milk:?} milk")
+    }

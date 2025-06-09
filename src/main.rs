@@ -1,26 +1,22 @@
+#[derive(Debug)]
 enum Milk {
     Lowfat(i32),
     Whole,
-}
-
-impl Milk {
-    fn drink(self) {
-        match self {
-            Milk::Lowfat(2) => {
-                println!("Delicious, 2% milk is my favorite")
-            }
-            Milk::Lowfat(percent) => {
-                println!("You've got the lowfat {percent} percent version")
-            }
-            Milk::Whole => {
-                println!("You've got the whole milk")
-            }
-        }
-    }
+    NonDairy { kind: String },
 }
 
 fn main() {
-    Milk::Lowfat(2).drink();
-    Milk::Lowfat(20).drink();
-    Milk::Whole.drink();
+    let my_beverage = Milk::Lowfat(10);
+    if let Milk::Lowfat(percent) = my_beverage {
+        println!("I got {percent} milk")
+    }
+
+    let oat_milk = Milk::NonDairy {
+        kind: String::from("Oat"),
+    };
+    if let Milk::NonDairy { kind } = oat_milk {
+        println!("I've got this non dairy milk of {kind}");
+    } else {
+        println!("I've got another milk variant")
+    }
 }

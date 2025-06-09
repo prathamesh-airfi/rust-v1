@@ -1,33 +1,19 @@
-#[derive(Debug)]
-enum Beans {
-    Pinto,
-    Black,
-}
-
-#[derive(Debug)]
-enum Meat {
-    Chicken,
-    Steak,
-}
-
-#[derive(Debug)]
-enum RestaurantItem {
-    Burrito { meat: Meat, beans: Beans },
-    Bowl { meat: Meat, beans: Beans },
-    VeganPlate,
+enum OperatingSystem {
+    Windows,
+    MacOS,
+    Linux,
 }
 
 fn main() {
-    let lunch = RestaurantItem::Burrito {
-        meat: Meat::Steak,
-        beans: Beans::Pinto,
-    };
-    let dinner = RestaurantItem::Bowl {
-        meat: Meat::Chicken,
-        beans: Beans::Black,
-    };
-    let abandoned_meal = RestaurantItem::VeganPlate;
+    let my_computer = OperatingSystem::Linux;
+    let age = years_since_releases(my_computer);
+    println!("My computer's operating system is {age} years old");
+}
 
-    println!("Lunch was {lunch:?} and dinner was {dinner:?}");
-    println!("Nobody eat {abandoned_meal:?}");
+fn years_since_releases(os: OperatingSystem) -> u32 {
+    match os {
+        OperatingSystem::Windows => 39,
+        OperatingSystem::MacOS => 23,
+        OperatingSystem::Linux => 34,
+    }
 }

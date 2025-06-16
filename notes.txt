@@ -1,0 +1,18 @@
+** Generics **
+
+  - A Generic is a type argument. It's a placeholder for future type.
+
+* Single Generic Example *
+
+  fn identity<T>(val: T) -> T {
+      val
+  }
+
+* Multiple Generic Example *
+
+  fn make_tuple<T>(first: T, second: i32) -> (T, i32) {
+    return (first, second);
+  }
+
+* Turbo Fish Operator *
+  variable::<type>();

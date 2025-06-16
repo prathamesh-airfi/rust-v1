@@ -46,3 +46,7 @@
     ## For Generic Type
 
       impl<T> TreasureChest<T> {}
+
+
+
+** Generics in Enum **

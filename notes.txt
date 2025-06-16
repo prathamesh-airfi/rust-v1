@@ -16,3 +16,33 @@
 
 * Turbo Fish Operator *
   variable::<type>();
+
+
+
+** Generics in Structs **
+
+  -- Struct Declaration --
+
+    struct TreasureChest<T> {
+      captain: String,
+      treasure: T,
+    }
+
+  -- Struct Initialization --
+
+    let silver_chest = TreasureChest {
+      captain: "Bloodsail".to_string(),
+      treasure: "Silver".to_string(),
+    };
+
+  -- Impl Block for Generic Struct --
+
+    ## For Specific/Concrete Type
+
+      impl TreasureChest<String> {} // For String
+      impl TreasureChest<[String; 3]> {} // For Array of String with 3 Items
+
+
+    ## For Generic Type
+
+      impl<T> TreasureChest<T> {}

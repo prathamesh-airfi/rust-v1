@@ -1,18 +1,21 @@
 #[allow(unused_variables)]
 
 fn main() {
-    let mut pizza_diameters = vec![8, 10, 12, 14];
-    /* Add element to last */
-    pizza_diameters.push(16);
-    pizza_diameters.push(18);
+    let pizza_diameters = vec![8, 10, 12, 14];
+    let pepperoni = "Pepperoni".to_string();
+    let mushroom = "Mushroom".to_string();
+    let sausages = "Sausages".to_string();
+    let pizza_toppings = vec![pepperoni, mushroom, sausages];
 
-    /* Add element to specific index */
-    pizza_diameters.insert(0, 6);
-    println!("{:?}", pizza_diameters);
+    /* For datatype implementing Copy Trait */
+    let second_index = pizza_diameters.get(1);
+    let second_index = pizza_diameters[1];
 
-    /* Remove element from last index */
-    let val = pizza_diameters.pop();
+    /* For datatype that doesn't implement Copy Trait */
+    let second_index = &pizza_toppings[1];
+    let second_index = pizza_toppings.get(1);
 
-    /* Remove element from specific index */
-    let val = pizza_diameters.remove(1);
+    /* Using slices */
+    let slice = &pizza_diameters[0..2];
+    println!("{:#?}", slice)
 }

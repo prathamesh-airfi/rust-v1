@@ -5,11 +5,7 @@ fn main() {
     let mushroom = "Mushroom".to_string();
     let sausages = "Sausages".to_string();
     let mut pizza_toppings = vec![pepperoni, mushroom, sausages];
-    let sua = &pizza_toppings[2];
-    let mush = &pizza_toppings[1];
-    let delicious_toppings = &pizza_toppings;
-    let pep = &mut pizza_toppings[0];
-    // println!("{:#?}", pizza_toppings);
-    // println!("{:#?}", mush);
-    *pep = "PeP".to_string();
+
+    pizza_toppings[1] = "Mast Mushroom".into();
+    pizza_toppings.push(String::from("Extra Cheese"));
 }
